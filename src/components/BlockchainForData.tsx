@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 46px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   font-family: "Monument Grotesk", sans-serif;
 
   @media (max-width: 768px) {
@@ -95,6 +95,7 @@ const CardTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: -30px;
 `;
 
 const CardTitle = styled.p`
@@ -104,10 +105,10 @@ const CardTitle = styled.p`
 
   @media (max-width: 768px) {
     margin-bottom: -40px;
-    margin-top: -40px;
+    margin-top: -10px;
   }
   @media (max-width: 450px) {
-    margin-top: -100px;
+    margin-top: -40px;
   }
 `;
 
