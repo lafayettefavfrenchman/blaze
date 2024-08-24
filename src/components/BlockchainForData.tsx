@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 46px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-family: "Monument Grotesk", sans-serif;
 
   @media (max-width: 768px) {
@@ -28,30 +28,29 @@ const Title = styled.p`
 const Subtitle = styled.p`
   font-size: 25px;
   color: #888;
-  margin-top: -20px;
-  margin-bottom: 40px;
+  margin-top: -15px;
+  margin-bottom: 25px;
 
   @media (max-width: 768px) {
     font-size: 18px;
-    margin-top: -10px;
-    margin-bottom: 30px;
+    margin-top: -8px;
+    margin-bottom: 20px;
   }
 `;
 
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
 
   @media (max-width: 768px) {
     flex-direction: row;
     gap: 20px;
     padding: 10px;
-
   }
   @media (max-width: 450px) {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
   }
 `;
 
@@ -60,29 +59,28 @@ const Card = styled.div`
   color: white;
   border-radius: 25px;
   width: 420px;
-  height: 427px;
-  padding: 27px;
+  height: 430px; /* Adjusted height */
+  padding: 20px 20px 30px; /* Adjusted padding */
   display: flex;
   flex-direction: column;
   text-align: center;
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 25px;
   }
-
 `;
 
 const CardImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 27px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 
   @media (max-width: 768px) {
-    margin-top: 15px;
-    margin-bottom: -35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -95,17 +93,17 @@ const CardTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -30px;
+  margin-top: -20px;
 `;
 
 const CardTitle = styled.p`
-  font-size: 26px;
-  margin-bottom: 30px;
-  margin-top: -50px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: -30px;
 
   @media (max-width: 768px) {
-    margin-bottom: 10px;
-    margin-top: -20px;
+    margin-bottom: 5px;
+    margin-top: -15px;
   }
   @media (max-width: 450px) {
     margin-top: -10px;
@@ -113,58 +111,54 @@ const CardTitle = styled.p`
 `;
 
 const CardSubtitle = styled.p`
-  font-size: 24px;
+  font-size: 22px;
   color: #888;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   margin-top: -20px;
 
   @media (max-width: 768px) {
-    margin-bottom: 10px;
-    margin-top: 60px;
+    margin-bottom: 5px;
+    margin-top: -10px;
   }
   @media (max-width: 450px) {
-    margin-bottom: 15px;
-    margin-top: -20px;
+    margin-bottom: 8px;
+    margin-top: -10px;
   }
 `;
 
 const CardDescription = styled.p`
-  font-size: 15px;
+  font-size: 14px;
   color: #888;
-  margin-top: -30px;
-  margin-bottom: 20px;
+  margin-top: -10px;
+  margin-bottom: 15px;
   line-height: 20px;
 
   @media (max-width: 768px) {
     line-height: 18px;
-    padding: 0 30px;
-    margin-bottom: 15px;
+    padding: 0 20px;
+    margin-bottom: 10px;
   }
   @media (max-width: 450px) {
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: -15px;
+    margin-bottom: 15px;
   }
 `;
-
 
 const ButtonContainer = styled.div`
   margin-top: auto;
   display: flex;
   justify-content: center;
-  padding: 10px;
-
-`;
+  padding: 10px 0 10px/; /* Adjusted padding */
+  `;
 
 const Button = styled.button<ButtonProps>`
   background-color: transparent;
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   border: 1px solid white;
-  padding: 12px 27px;
+  padding: 10px 25px;
   border-radius: 40px;
   cursor: pointer;
-  margin-bottom: -9px;
-  margin-top: -29px;
   width: 100%;
 
   &:hover {
