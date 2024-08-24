@@ -95,7 +95,7 @@ const Heading = styled.h1`
   }
 
   @media (max-width: 480px) {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     letter-spacing: -2px;
   }
 `;
@@ -119,8 +119,9 @@ const Subheading = styled.p`
   }
 
   @media (max-width: 480px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0 20px;
+    line-height: 30px;
   }
 `;
 
@@ -130,6 +131,11 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: -2px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 // Styled component for the button
@@ -147,6 +153,16 @@ const Button = styled.button<ButtonProps>`
   &:hover {
     background-color: ${(props) => (props.primary ? "#E62058" : "#000")};
     color: ${(props) => (props.primary ? "#FFF" : "#fff")};
+  }
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    padding: 0 50px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 5px 25px;
+    line-height: 30px;
   }
 `;
 

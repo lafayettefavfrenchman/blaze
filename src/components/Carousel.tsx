@@ -88,8 +88,9 @@ const CarouselButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 8px 16px;
-  }
+    padding: 5px 20px;
+    font-size: 10px;
+
 `;
 
 const Carousel: React.FC = () => {

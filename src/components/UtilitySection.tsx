@@ -22,6 +22,7 @@ const UtilitySectionContainer = styled.section`
   flex-direction: column;
   align-items: center;
   padding: 50px 20px;
+  width: 100%;
 
   @media (max-width: 1024px) {
     padding: 40px 15px;
@@ -48,9 +49,13 @@ const Title = styled.p`
 const CardsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 22px;
   max-width: 1250px;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    gap: 18px;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -60,7 +65,6 @@ const CardsContainer = styled.div`
 
 const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
   flex: 1;
-  max-width: 240px;
   padding: 20px;
   text-align: center;
   border-radius: 20px;
@@ -73,11 +77,6 @@ const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
       animation: ${fadeInUp} 0.6s ease-in-out forwards ${$delay * 0.2}s;
     `}
 
-  @media (max-width: 768px) {
-    max-width: 100%;
-    padding: 15px;
-  }
-
   img {
     max-width: 90px;
     margin-top: 20px;
@@ -85,6 +84,12 @@ const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
     @media (max-width: 768px) {
       margin-bottom: 15px;
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
   }
 `;
 
