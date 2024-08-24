@@ -129,7 +129,7 @@ const CardSubtitle = styled.p`
 const CardDescription = styled.p`
   font-size: 14px;
   color: #888;
-  margin-top: -10px;
+  //margin-top: -10px;
   margin-bottom: 15px;
   line-height: 20px;
 
