@@ -93,7 +93,6 @@ const CardTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -20px;
 `;
 
 const CardTitle = styled.p`
