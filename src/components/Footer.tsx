@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // Import your icons and logo here
 // For example: 
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/Logo.svg";
 //import IconX from "../assets/icon-x.png";
 //import IconDiscord from "../assets/icon-discord.png";
 
