@@ -78,7 +78,7 @@ const CardImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 27px;
-  margin-bottom: -65px;
+  margin-bottom: 20px;
 
   @media (max-width: 768px) {
     margin-top: 15px;
@@ -116,9 +116,12 @@ const CardSubtitle = styled.p`
   font-size: 24px;
   color: #888;
   margin-bottom: -15px;
+  margin-top: 30px;
 
   @media (max-width: 768px) {
     margin-bottom: -10px;
+    margin-top: 30px;
+
   }
   @media (max-width: 450px) {
     margin-bottom: 20px;
@@ -128,7 +131,7 @@ const CardSubtitle = styled.p`
 const CardDescription = styled.p`
   font-size: 15px;
   color: #888;
-  margin-bottom: -50px;
+  margin-top: 30px;
   line-height: 20px;
 
   @media (max-width: 768px) {
