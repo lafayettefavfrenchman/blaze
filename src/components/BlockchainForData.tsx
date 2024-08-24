@@ -100,51 +100,52 @@ const CardTextContainer = styled.div`
 
 const CardTitle = styled.p`
   font-size: 26px;
-  margin-bottom: 0; /* Removed negative margin */
-  margin-top: 0;    /* Removed negative margin */
-  padding-top: 10px; /* Adjusted with padding instead */
-  padding-bottom: 10px;
+  margin-bottom: -30px;
+  margin-top: -40px;
 
   @media (max-width: 768px) {
-    margin-bottom: 10px; /* Adjusted to work with smaller screens */
-    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: -20px;
   }
   @media (max-width: 450px) {
-    margin-top: 20px; /* Further adjusted for even smaller screens */
+    margin-top: -10px;
   }
 `;
 
 const CardSubtitle = styled.p`
   font-size: 24px;
   color: #888;
-  margin-bottom: 10px; /* Removed negative margin */
-  margin-top: 20px;    /* Adjusted margins for consistency */
+  margin-bottom: 10px;
+  margin-top: 2px;
 
   @media (max-width: 768px) {
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 60px;
   }
   @media (max-width: 450px) {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-top: -20px;
   }
 `;
-
 
 const CardDescription = styled.p`
   font-size: 15px;
   color: #888;
-  margin-top: 30px;
+  margin-top: -20px;
+  margin-bottom: 20px;
   line-height: 20px;
 
   @media (max-width: 768px) {
-    margin-bottom: -15px;
     line-height: 18px;
-    padding: 0 30px
+    padding: 0 30px;
+    margin-bottom: 15px;
   }
   @media (max-width: 450px) {
-    margin-top: -30px;
+    margin-top: -20px;
+    margin-bottom: 20px;
   }
 `;
+
 
 const ButtonContainer = styled.div`
   margin-top: auto;
