@@ -100,8 +100,8 @@ const CardTextContainer = styled.div`
 
 const CardTitle = styled.p`
   font-size: 26px;
-  margin-bottom: -30px;
-  margin-top: -40px;
+  margin-bottom: 30px;
+  margin-top: -50px;
 
   @media (max-width: 768px) {
     margin-bottom: 10px;
@@ -116,7 +116,7 @@ const CardSubtitle = styled.p`
   font-size: 24px;
   color: #888;
   margin-bottom: 10px;
-  margin-top: 2px;
+  margin-top: -20px;
 
   @media (max-width: 768px) {
     margin-bottom: 10px;
@@ -131,7 +131,7 @@ const CardSubtitle = styled.p`
 const CardDescription = styled.p`
   font-size: 15px;
   color: #888;
-  margin-top: -20px;
+  margin-top: -30px;
   margin-bottom: 20px;
   line-height: 20px;
 
