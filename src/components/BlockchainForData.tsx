@@ -128,7 +128,7 @@ const CardSubtitle = styled.p`
 const CardDescription = styled.p`
   font-size: 15px;
   color: #888;
-  margin-bottom: -20px;
+  margin-bottom: -50px;
   line-height: 20px;
 
   @media (max-width: 768px) {
