@@ -100,33 +100,35 @@ const CardTextContainer = styled.div`
 
 const CardTitle = styled.p`
   font-size: 26px;
-  margin-bottom: -67px;
-  margin-top: -67px;
+  margin-bottom: 0; /* Removed negative margin */
+  margin-top: 0;    /* Removed negative margin */
+  padding-top: 10px; /* Adjusted with padding instead */
+  padding-bottom: 10px;
 
   @media (max-width: 768px) {
-    margin-bottom: -40px;
-    margin-top: -10px;
+    margin-bottom: 10px; /* Adjusted to work with smaller screens */
+    margin-top: 10px;
   }
   @media (max-width: 450px) {
-    margin-top: -40px;
+    margin-top: 20px; /* Further adjusted for even smaller screens */
   }
 `;
 
 const CardSubtitle = styled.p`
   font-size: 24px;
   color: #888;
-  margin-bottom: -15px;
-  margin-top: 30px;
+  margin-bottom: 10px; /* Removed negative margin */
+  margin-top: 20px;    /* Adjusted margins for consistency */
 
   @media (max-width: 768px) {
-    margin-bottom: -10px;
-    margin-top: 30px;
-
+    margin-bottom: 10px;
+    margin-top: 20px;
   }
   @media (max-width: 450px) {
     margin-bottom: 20px;
   }
 `;
+
 
 const CardDescription = styled.p`
   font-size: 15px;
