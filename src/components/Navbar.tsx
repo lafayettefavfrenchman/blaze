@@ -12,7 +12,7 @@ const NavbarContainer = styled.nav<{ isScrolled: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 130px;
+  padding: 3px 130px;
   font-family: "Monument Grotesk", sans-serif;
   position: sticky;
   top: 0;
@@ -75,8 +75,8 @@ const RightSide = styled.ul`
 const DocumentationButton = styled.button`
   background-color: transparent;
   border: 1px solid #000;
-  font-size: 15px;
-  padding: 2px 30px;
+  font-size: 13px;
+  padding: 6px 30px;
   font-family: "Monument Grotesk", sans-serif;
   cursor: pointer;
   border-radius: 50px;
@@ -137,8 +137,8 @@ const MobileMenu = styled.div<MobileMenuProps>`
 
 const Search = styled.div`
   img {
-    width: 20px;
-
+    width: 30px;
+    padding-top: 20px;
     @media (max-width: 768px) {
       width: 18px;
     }
