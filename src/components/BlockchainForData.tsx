@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import EyeImg from "..//assets/eyeimg.svg";
-import CircleImg from "..//assets/circleimg.svg";
-
-interface ButtonProps {
-  primary?: boolean;
-}
+import EyeImg from "../assets/eyeimg.svg";
+import CircleImg from "../assets/circleimg.svg";
 
 const Container = styled.div`
   font-family: "Monument Grotesk", sans-serif;
@@ -17,8 +13,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 46px;
-  margin-bottom: 5px;
-  font-family: "Monument Grotesk", sans-serif;
+  margin: 0 0 10px;
 
   @media (max-width: 768px) {
     font-size: 28px;
@@ -28,12 +23,10 @@ const Title = styled.p`
 const Subtitle = styled.p`
   font-size: 25px;
   color: #888;
-  margin-top: -15px;
-  margin-bottom: 25px;
+  margin: 0 0 25px;
 
   @media (max-width: 768px) {
     font-size: 18px;
-    margin-top: -8px;
     margin-bottom: 20px;
   }
 `;
@@ -44,10 +37,9 @@ const CardContainer = styled.div`
   gap: 40px;
 
   @media (max-width: 768px) {
-    flex-direction: row;
     gap: 20px;
-    padding: 10px;
   }
+
   @media (max-width: 450px) {
     flex-direction: column;
     gap: 15px;
@@ -59,15 +51,16 @@ const Card = styled.div`
   color: white;
   border-radius: 25px;
   width: 420px;
-  height: 430px; /* Adjusted height */
-  padding: 20px 20px 30px; /* Adjusted padding */
+  height: 430px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 20px 20px 25px;
+    height: auto;
+    min-height: 430px;
   }
 `;
 
@@ -75,13 +68,7 @@ const CardImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-  @media (max-width: 768px) {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+  margin-bottom: 20px;
 `;
 
 const Icon = styled.div`
@@ -92,65 +79,39 @@ const CardTextContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: -70px;
+
 `;
 
 const CardTitle = styled.p`
   font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: -30px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 5px;
-    margin-top: -15px;
-  }
-  @media (max-width: 450px) {
-    margin-top: -10px;
-  }
+  margin: 0;
 `;
 
 const CardSubtitle = styled.p`
   font-size: 22px;
   color: #888;
-  margin-bottom: 8px;
-  margin-top: -20px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 5px;
-    margin-top: -10px;
-  }
-  @media (max-width: 450px) {
-    margin-bottom: 8px;
-    margin-top: -10px;
-  }
+  margin: -12px 0 0;
 `;
 
 const CardDescription = styled.p`
   font-size: 14px;
   color: #888;
-  //margin-top: -10px;
-  margin-bottom: 15px;
+  margin: 15px 0 0;
   line-height: 20px;
 
   @media (max-width: 768px) {
     line-height: 18px;
     padding: 0 20px;
-    margin-bottom: 10px;
-  }
-  @media (max-width: 450px) {
-    margin-top: -15px;
-    margin-bottom: 15px;
   }
 `;
 
 const ButtonContainer = styled.div`
   margin-top: auto;
-  display: flex;
-  justify-content: center;
-  padding: 10px 0 10px/; /* Adjusted padding */
-  `;
+  padding: 20px 0 0;
+`;
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.button`
   background-color: transparent;
   color: white;
   font-size: 16px;
@@ -170,7 +131,7 @@ const Button = styled.button<ButtonProps>`
   }
 `;
 
-const BlockchainForData: React.FC = () => {
+const BlockchainForData = () => {
   return (
     <Container>
       <Title>The blockchain for data</Title>
@@ -182,7 +143,7 @@ const BlockchainForData: React.FC = () => {
         <Card>
           <CardImageContainer>
             <Icon>
-              <img width="140px" src={EyeImg}></img>
+              <img width="140px" src={EyeImg} alt="FTSO" />
             </Icon>
           </CardImageContainer>
           <CardTextContainer>
@@ -194,13 +155,13 @@ const BlockchainForData: React.FC = () => {
             </CardDescription>
           </CardTextContainer>
           <ButtonContainer>
-            <Button primary>Learn More</Button>
+            <Button>Learn More</Button>
           </ButtonContainer>
         </Card>
         <Card>
           <CardImageContainer>
             <Icon>
-              <img width="140px" src={CircleImg}></img>
+              <img width="140px" src={CircleImg} alt="Data Connector" />
             </Icon>
           </CardImageContainer>
           <CardTextContainer>
