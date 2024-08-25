@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import EyeImg from "../assets/eyeimg.svg";
 import CircleImg from "../assets/circleimg.svg";
@@ -13,7 +12,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 46px;
-  margin: 0 0 10px;
+  margin: 0 0 2px;
 
   @media (max-width: 768px) {
     font-size: 28px;
@@ -79,7 +78,7 @@ const CardTextContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: -70px;
+  margin-top: -60px;
 
 `;
 
@@ -91,7 +90,7 @@ const CardTitle = styled.p`
 const CardSubtitle = styled.p`
   font-size: 22px;
   color: #888;
-  margin: -12px 0 0;
+  margin: 5px 0 0;
 `;
 
 const CardDescription = styled.p`
