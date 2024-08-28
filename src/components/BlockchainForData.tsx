@@ -67,7 +67,7 @@ const CardImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
 `;
 
 const Icon = styled.div`
@@ -78,7 +78,7 @@ const CardTextContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin-top: -60px;
+  //margin-bottom: 50px;
 
 `;
 

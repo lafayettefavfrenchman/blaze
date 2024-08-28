@@ -125,7 +125,6 @@ const Subheading = styled.p`
   }
 `;
 
-// Styled component for the button wrapper
 const ButtonWrapper = styled.div`
   margin-top: 30px;
   display: flex;
