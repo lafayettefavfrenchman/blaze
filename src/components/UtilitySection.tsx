@@ -31,7 +31,6 @@ const UtilitySectionContainer = styled.section`
   @media (max-width: 768px) {
     padding: 30px 10px;
     flex-direction: column;
-
   }
 `;
 
@@ -89,8 +88,8 @@ const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
+    width: 50%;
+    max-width: 70%;
     padding: 15px;
   }
 `;
