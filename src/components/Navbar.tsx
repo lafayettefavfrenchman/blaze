@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Img from "../assets/Logo.svg";
 import SearchImg from "../assets/search.svg";
 import { Sling as Hamburger } from 'hamburger-react';
+import styled, { keyframes } from "styled-components";
+
 
 interface MobileMenuProps {
   open: boolean;
 }
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
 
-const NavbarContainer = styled.nav<{ isScrolled: boolean }>`
+const NavbarContainer = styled.nav<{ isScrolled: boolean; isVisible: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,6 +25,8 @@ const NavbarContainer = styled.nav<{ isScrolled: boolean }>`
   background-color: ${({ isScrolled }) => (isScrolled ? "#fff" : "transparent")};
   //box-shadow: ${({ isScrolled }) => (isScrolled ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none")};
   transition: background-color 0.3s, box-shadow 0.3s;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  animation: ${({ isVisible }) => isVisible && fadeIn} 0.5s ease-out;
 
   @media (max-width: 1024px) {
     padding: 2px 80px;
@@ -148,6 +155,11 @@ const Search = styled.div`
 const Navbar: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -162,7 +174,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <NavbarContainer isScrolled={isScrolled}>
+    <NavbarContainer isScrolled={isScrolled}  isVisible={isVisible}>
       <Logo>
         <img src={Img} alt="Logo" />
       </Logo>

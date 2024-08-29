@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 // Interface for the GradientText component props
@@ -12,6 +12,11 @@ interface GradientTextProps {
 interface ButtonProps {
   primary?: boolean;
 }
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
 
 // Keyframes for gradient animation
 const gradientAnimation = keyframes`
@@ -65,6 +70,9 @@ const BodyWrapper = styled.div`
   text-align: center;
   margin-top: 50px;
   padding: 100px;
+  opacity: 0;
+  animation: ${fadeIn} 0.5s ease-out forwards;
+  animation-delay: 0.5s;
 
   @media (max-width: 768px) {
     padding: 50px;
@@ -83,6 +91,9 @@ const Heading = styled.h1`
   letter-spacing: -5px;
   margin: 0;
   line-height: 1.2;
+  opacity: 0;
+  animation: ${fadeIn} 0.5s ease-out forwards;
+  animation-delay: 0.7s;
 
   @media (max-width: 1024px) {
     font-size: 6rem;
@@ -107,6 +118,9 @@ const Subheading = styled.p`
   color: #555;
   padding: 0 150px;
   line-height: 40px;
+  opacity: 0;
+  animation: ${fadeIn} 0.5s ease-out forwards;
+  animation-delay: 0.9s;
 
   @media (max-width: 1024px) {
     padding: 0 100px;
@@ -130,6 +144,9 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: -2px;
+  opacity: 0;
+  animation: ${fadeIn} 0.5s ease-out forwards;
+  animation-delay: 1.1s;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -154,8 +171,8 @@ const Button = styled.button<ButtonProps>`
     color: ${(props) => (props.primary ? "#FFF" : "#fff")};
   }
   @media (max-width: 768px) {
-    font-size: 1.8rem;
-    padding: 0 50px;
+    font-size: 1.4rem;
+    padding: 10 50px;
   }
 
   @media (max-width: 480px) {
@@ -167,8 +184,13 @@ const Button = styled.button<ButtonProps>`
 
 // Hero component definition
 const Hero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
   return (
-    <BodyWrapper>
+    <BodyWrapper style={{ opacity: isVisible ? 1 : 0 }}>
       <Heading>
         <GradientText
           text="Connect Everything."

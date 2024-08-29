@@ -137,10 +137,16 @@ const CarouselButton = styled.button`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 22px;
   margin-top: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2px;
+
+  }
 `;
 
 const UtilitySection: React.FC = () => {

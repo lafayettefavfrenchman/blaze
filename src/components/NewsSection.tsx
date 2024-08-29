@@ -30,7 +30,7 @@ const NewsSectionContainer = styled.section<{ $isVisible: boolean }>`
 
 const Title = styled.p`
   font-family: "Monument Grotesk", sans-serif;
-  font-size: 40px;
+  font-size: 45px;
   text-align: center;
   margin-bottom: 40px;
 
@@ -42,54 +42,78 @@ const Title = styled.p`
 
 const NewsCardsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  max-width: 1250px;
+  max-width: 1350px;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: left;
+    align-items: center;
   }
 `;
 
 const NewsCard = styled.div`
   flex: 1;
-  max-width: 360px;
+  max-width: 660px;
   text-align: center;
   overflow: hidden;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  padding: 20px;
+  gap: 20px;
+
 
   img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
   }
 
   p {
-    padding: 20px;
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 30px;
+    padding : 10px 20px 0 0px;
     color: black;
-  }
+    margin: 0;
+    text-align: left; /* Align the text below the image to the left */
 
-  a {
-    color: #e62058;
-    text-decoration: none;
-    font-weight: bold;
+    a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+    }
   }
 `;
 
 const NewsLabel = styled.div`
-  padding: 0 0;
-  background-color: lavender;
+  background-color: #f7ecef; /* Background color */
   color: #e62058;
-  font-size: 12px;
-  border-radius: 5px;
+  font-size: 10px;
+  border-radius: 15px; /* Border radius */
   display: inline-block;
-  margin-bottom: 20px;
+  padding: 2px 5px; /* Small padding for some space inside */
+  margin: 0px 18rem 20px 0px; /* Margin for spacing */
+  text-align: center; /* Align the label to the left */
+  transition: background-color 0.3s ease;
+
+
+  &:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* Change text color to white on hover */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  padding: 2px 5px; /* Small padding for some space inside */
+  margin: 0px 16rem 20px 0px; /* Margin for spacing */
+  }
 `;
 
 const NewsSection: React.FC = () => {
@@ -124,14 +148,14 @@ const NewsSection: React.FC = () => {
         <NewsCard>
           <img src={Image2} alt="News 2" />
           <p>
-            Stargate Integrates Flare to Deliver Unified Liquidity From 25 Chains
+            <a href="#">Stargate Integrates Flare to Deliver Unified Liquidity From 25 Chains</a>
           </p>
           <NewsLabel>ECOSYSTEM NEWS</NewsLabel>
         </NewsCard>
         <NewsCard>
           <img src={Image3} alt="News 3" />
           <p>
-            FAssets open beta update: demo dapp for minting now available
+            <a href="#">FAssets open beta update: demo dapp for minting now available</a>
           </p>
           <NewsLabel>FLARE UPDATES</NewsLabel>
         </NewsCard>

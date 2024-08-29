@@ -8,6 +8,7 @@ import './App.css';
 import NewsSection from './components/NewsSection';
 import ResponsiveHero from './components/BottomHero';
 import Footer from './components/Footer';
+import FlareGallery from './components/Gallery';
 
 function App() {
   return (
@@ -22,6 +23,13 @@ function App() {
       <UtilitySection />
       <NewsSection />
       <ResponsiveHero />
+      <br/>
+      <br/>
+      <br/>
+      <FlareGallery />
+      <br/>
+      <br/>
+      <br/>
       <br/>
       <Footer/>
     </>
