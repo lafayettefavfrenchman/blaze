@@ -30,6 +30,8 @@ const UtilitySectionContainer = styled.section`
 
   @media (max-width: 768px) {
     padding: 30px 10px;
+    flex-direction: column;
+
   }
 `;
 
