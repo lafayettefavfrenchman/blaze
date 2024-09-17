@@ -208,8 +208,8 @@ const Hero = () => {
         />
       </Subheading>
       <ButtonWrapper>
-        <Button>Learn More</Button>
-        <Button primary>Start Building</Button>
+        <Button>Select Wallet</Button>
+        <Button primary>Connect Wallet</Button>
       </ButtonWrapper>
     </BodyWrapper>
   );

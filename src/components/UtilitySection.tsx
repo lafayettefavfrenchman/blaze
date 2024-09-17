@@ -116,10 +116,9 @@ const CardDescription = styled.p`
 `;
 
 const CarouselButton = styled.button`
-  margin-top: 20px;
   background-color: #e62058;
   border: none;
-  padding: 5px 40px;
+  padding: 10px 40px;
   color: #fff;
   font-family: "Monument Grotesk", sans-serif;
   font-size: 15px;
@@ -132,6 +131,8 @@ const CarouselButton = styled.button`
 
   @media (max-width: 768px) {
     padding: 8px 16px;
+    font-size: 10px;
+
   }
 `;
 
@@ -186,21 +187,20 @@ const UtilitySection: React.FC = () => {
             $delay={index}
           >
             <img src={image} alt="Utility" />
-            <CardTitle>{["Decentralized Bridging", "State Acquisition", "Web2 Connectivity", "Enshrined Oracles", "Data Access For Free"][index]}</CardTitle>
+            <CardTitle>{["Connect to Dapps", "Validation", "Claim", "Migration", "Swap Error"][index]}</CardTitle>
             <CardDescription>
               {[
-                "Trustlessly access value and users from other chains.",
-                "Build dapps and protocols that utilize state from any connected chain.",
-                "Trustlessly trigger smart contracts with data from web2 APIs.",
-                "Access all the data you need, knowing Flare's oracles are secured at the network layer.",
-                "Build on Flare with a broad range of data feeds available on-chain for free."
+                "Error resolution for Dapp connections.",
+                "Secure validation processes.",
+                "Securely Claim your Tokens.",
+                "Migration Error Assistance.",
+                "Seamless error exchanges."
               ][index]}
             </CardDescription>
           </Card>
         ))}
       </CardsContainer>
       <ButtonContainer>
-        <CarouselButton>Start Building</CarouselButton>
         <CarouselButton>Start Building</CarouselButton>
         <CarouselButton>Start Building</CarouselButton>
       </ButtonContainer>
