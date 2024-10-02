@@ -282,6 +282,10 @@ const WalletModal: React.FC<WalletModalProps> = ({
                 fontSize: "0.8rem",
                 color: "#666", // Unselected tab text color
               },
+              "& .MuiButtonBase-root-MuiTab-root.Mui-selected": {
+                color: "#E62058", // Selected tab text color
+
+              },
               "& .Mui-selected": {
                 color: "#E62058", // Selected tab text color
               },

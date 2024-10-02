@@ -115,33 +115,67 @@ const HamburgerIcon = styled.div`
 const MobileMenu = styled.div<MobileMenuProps>`
   display: ${({ open }) => (open ? "flex" : "none")};
   flex-direction: column;
-  align-items: center;
   position: absolute;
   top: 70px;
   left: 0;
   right: 0;
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   z-index: 1000;
+  animation: ${({ open }) => (open ? fadeIn : "")} 0.5s ease-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};
   }
 
-  li {
-    padding: 10px 0;
+  ul {
+    margin-left: 30px;
     font-size: 18px;
     color: #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: ${({ open }) => (open ? fadeIn : "")} 0.4s forwards;
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
 
     &:hover {
+      background-color: #f5f5f5;
+      transform: scale(1.05);
       color: #e62058;
     }
   }
 
   button {
     margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: #e62058;
+      color: white;
+    }
   }
 `;
+
 
 const Search = styled.div`
   img {
@@ -150,6 +184,8 @@ const Search = styled.div`
 
     @media (max-width: 768px) {
       width: 18px;
+      margin-left: 30px;
+
     }
   }
 `;
@@ -198,16 +234,16 @@ const Navbar: React.FC = () => {
         <Hamburger toggled={isOpen} toggle={setOpen} size={30} color="#E62058" />
       </HamburgerIcon>
       <MobileMenu open={isOpen}>
-        <li><Link to="hero" smooth={true} duration={500} onClick={() => setOpen(false)}>Learn</Link></li>
-        <li><Link to="blockchain-for-data" smooth={true} duration={500} onClick={() => setOpen(false)}>Build</Link></li>
-        <li><Link to="carousel" smooth={true} duration={500} onClick={() => setOpen(false)}>Use</Link></li>
-        <li><Link to="utility-section" smooth={true} duration={500} onClick={() => setOpen(false)}>Operate</Link></li>
-        <li><Link to="gallery" smooth={true} duration={500} onClick={() => setOpen(false)}>Connect</Link></li>
-        <li><Link to="news-section" smooth={true} duration={500} onClick={() => setOpen(false)}>News</Link></li>
-        <Search>
+        <ul><Link to="hero" smooth={true} duration={500} onClick={() => setOpen(false)}>Learn</Link></ul>
+        <ul><Link to="blockchain-for-data" smooth={true} duration={500} onClick={() => setOpen(false)}>Build</Link></ul>
+        <ul><Link to="carousel" smooth={true} duration={500} onClick={() => setOpen(false)}>Use</Link></ul>
+        <ul><Link to="utility-section" smooth={true} duration={500} onClick={() => setOpen(false)}>Operate</Link></ul>
+        <ul><Link to="gallery" smooth={true} duration={500} onClick={() => setOpen(false)}>Connect</Link></ul>
+        <ul><Link to="news-section" smooth={true} duration={500} onClick={() => setOpen(false)}>News</Link></ul>
+        <Search onClick={() => setOpen(false)}>
           <img src={SearchImg} alt="Search" />
         </Search>
-        <DocumentationButton>Connect ↗</DocumentationButton>
+        <DocumentationButton onClick={() => setOpen(false)}>Connect ↗</DocumentationButton>
       </MobileMenu>
     </NavbarContainer>
   );
