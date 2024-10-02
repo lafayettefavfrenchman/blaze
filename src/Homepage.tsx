@@ -14,6 +14,8 @@ function App() {
       <div id="hero">
         <Hero />
       </div>
+      <br/>
+      <br/>
       <div id="blockchain-for-data">
         <BlockchainForData />
       </div>
