@@ -115,41 +115,6 @@ const CardDescription = styled.p`
   }
 `;
 
-const CarouselButton = styled.button`
-  background-color: #e62058;
-  border: none;
-  padding: 10px 40px;
-  color: #fff;
-  font-family: "Monument Grotesk", sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 50px;
-
-  &:hover {
-    background-color: #c5174c;
-  }
-
-  @media (max-width: 768px) {
-    padding: 8px 16px;
-    font-size: 10px;
-
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 30px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 2px;
-
-  }
-`;
 
 const UtilitySection: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean[]>([false, false, false, false, false]);
@@ -200,10 +165,6 @@ const UtilitySection: React.FC = () => {
           </Card>
         ))}
       </CardsContainer>
-      <ButtonContainer>
-        <CarouselButton>Start Building</CarouselButton>
-        <CarouselButton>Start Building</CarouselButton>
-      </ButtonContainer>
     </UtilitySectionContainer>
   );
 };

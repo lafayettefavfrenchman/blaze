@@ -1,17 +1,42 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { wallets } from "./utility/wallets"; // Import wallets data
+import WalletbaseModal from "./utility/walletbasemodal"; // Import modals
+import WalletSelectionModal from "./utility/walletselectionmodal";
 
-// Interface for the GradientText component props
 interface GradientTextProps {
   text: string;
   gradient: string;
   animationDuration?: string;
 }
 
-// Interface for the Button component props
-interface ButtonProps {
-  primary?: boolean;
-}
+// Styled Button from App.jsx
+const StyledButton = styled.button<{ primary?: boolean }>`
+  padding: 15px 40px;
+  margin: 0 10px;
+  border: 1px solid ${(props) => (props.primary ? "#E62058" : "#000")};
+  border-radius: 60px;
+  background-color: ${(props) => (props.primary ? "#E62058" : "#FFF")};
+  color: ${(props) => (props.primary ? "#FFF" : "#000")};
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => (props.primary ? "#E62058" : "#000")};
+    color: ${(props) => (props.primary ? "#FFF" : "#fff")};
+  }
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    padding: 10px 50px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 5px 25px;
+    line-height: 30px;
+  }
+`;
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -37,7 +62,6 @@ interface GradientTextWrapperProps {
   animationDuration?: string;
 }
 
-// Styled component for the gradient text
 const GradientTextWrapper = styled.span<GradientTextWrapperProps>`
   background: ${(props) => props.gradient};
   background-size: 200% 200%;
@@ -49,23 +73,18 @@ const GradientTextWrapper = styled.span<GradientTextWrapperProps>`
   display: inline-block;
 `;
 
-// GradientText component definition
 const GradientText: React.FC<GradientTextProps> = ({
   text,
   gradient,
   animationDuration = "10s",
 }) => {
   return (
-    <GradientTextWrapper
-      gradient={gradient}
-      animationDuration={animationDuration}
-    >
+    <GradientTextWrapper gradient={gradient} animationDuration={animationDuration}>
       {text}
     </GradientTextWrapper>
   );
 };
 
-// Styled component for the body wrapper
 const BodyWrapper = styled.div`
   text-align: center;
   margin-top: 50px;
@@ -143,7 +162,7 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: -2px;
+  gap: 10px;
   opacity: 0;
   animation: ${fadeIn} 0.5s ease-out forwards;
   animation-delay: 1.1s;
@@ -154,48 +173,49 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-// Styled component for the button
-const Button = styled.button<ButtonProps>`
-  padding: 15px 40px;
-  margin: 0 10px;
-  border: 1px solid ${(props) => (props.primary ? "#E62058" : "#000")};
-  border-radius: 60px;
-  background-color: ${(props) => (props.primary ? "#E62058" : "#FFF")};
-  color: ${(props) => (props.primary ? "#FFF" : "#000")};
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: ${(props) => (props.primary ? "#E62058" : "#000")};
-    color: ${(props) => (props.primary ? "#FFF" : "#fff")};
-  }
-  @media (max-width: 768px) {
-    font-size: 1.4rem;
-    padding: 10 50px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 5px 25px;
-    line-height: 30px;
-  }
-`;
-
-// Hero component definition
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedWallet, setSelectedWallet] = useState<{ id: string; name: string; image: string } | null>(null);
+  const [openWalletbaseModal, setOpenWalletbaseModal] = useState(false);
+  const [openWalletSelectionModal, setOpenWalletSelectionModal] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleWalletChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedWallet(
+      wallets.find((wallet) => wallet.id === event.target.value) || null
+    );
+  };
+
+  const handleConnectWallet = () => {
+    setOpenWalletbaseModal(true);
+  };
+
+  const handleCloseWalletbaseModal = () => {
+    setOpenWalletbaseModal(false);
+  };
+
+  const handleCloseWalletSelectionModal = () => {
+    setOpenWalletSelectionModal(false);
+  };
+
+  const handleSelectWallet = (wallet: any) => {
+    setSelectedWallet(wallet);
+    setOpenWalletSelectionModal(false);
+  };
+
+  const handleOpenWalletSelectionModal = () => {
+    setOpenWalletbaseModal(false);
+    setOpenWalletSelectionModal(true);
+  };
+
   return (
     <BodyWrapper style={{ opacity: isVisible ? 1 : 0 }}>
       <Heading>
         <GradientText
           text="Connect Everything."
-          //gradient="linear-gradient(to right, #ff6900, #fcb900, #7bdcb5, #00d084, #0693e3, #9b51e0)"
-          //gradient= "linear-gradient(to right, #E62058, #F7A9B9, #D1B9F2, #B4E3F1, #A9F5F2, #D1E3F2, #F7B9D1)"
           gradient="linear-gradient(to right, #E62058, #F7A9B9, #D1B9F2, #D2B7B4, #BDA9A7, #D1E3F2, #F7B9D1)"
           animationDuration="15s"
         />
@@ -208,9 +228,25 @@ const Hero = () => {
         />
       </Subheading>
       <ButtonWrapper>
-        <Button>Select Wallet</Button>
-        <Button primary>Connect Wallet</Button>
+        <StyledButton onClick={handleOpenWalletSelectionModal}>
+          Select Wallet
+        </StyledButton>
+        <StyledButton primary onClick={handleConnectWallet}>
+          Connect Wallet
+        </StyledButton>
       </ButtonWrapper>
+
+      {/* Modals for wallet selection and connection */}
+      <WalletbaseModal
+        open={openWalletbaseModal}
+        onClose={handleCloseWalletbaseModal}
+        onOpenWalletSelection={handleOpenWalletSelectionModal}
+      />
+      <WalletSelectionModal
+        open={openWalletSelectionModal}
+        onClose={handleCloseWalletSelectionModal}
+        onSelectWallet={handleSelectWallet}
+      />
     </BodyWrapper>
   );
 };
