@@ -1,7 +1,12 @@
+import React from 'react';
 import Lottie from "react-lottie";
 import animationData from "../assets/square.json"; // Update with your Lottie animation path
 
-const SquareProgress = ({ size }) => {
+interface SquareProgressProps {
+  size: number | string;
+}
+
+const SquareProgress: React.FC<SquareProgressProps> = ({ size }) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
