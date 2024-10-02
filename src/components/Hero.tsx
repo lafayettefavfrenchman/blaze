@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { wallets } from "./utility/wallets"; // Import wallets data
+//import { wallets } from "./utility/wallets"; // Import wallets data
 import WalletbaseModal from "./utility/walletbasemodal"; // Import modals
 import WalletSelectionModal from "./utility/walletselectionmodal";
 
@@ -175,7 +175,7 @@ const ButtonWrapper = styled.div`
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedWallet, setSelectedWallet] = useState<{ id: string; name: string; image: string } | null>(null);
+  const [, setSelectedWallet] = useState<{ id: string; name: string; image: string } | null>(null);
   const [openWalletbaseModal, setOpenWalletbaseModal] = useState(false);
   const [openWalletSelectionModal, setOpenWalletSelectionModal] = useState(false);
 
@@ -183,11 +183,11 @@ const Hero = () => {
     setIsVisible(true);
   }, []);
 
-  const handleWalletChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedWallet(
-      wallets.find((wallet) => wallet.id === event.target.value) || null
-    );
-  };
+  // const handleWalletChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedWallet(
+  //     wallets.find((wallet) => wallet.id === event.target.value) || null
+  //   );
+  // };
 
   const handleConnectWallet = () => {
     setOpenWalletbaseModal(true);

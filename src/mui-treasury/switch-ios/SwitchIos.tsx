@@ -11,6 +11,7 @@ export const SwitchIos = styled(Switch)(({ theme }) => {
   const height = `calc(${size} + ${borderWidth * 2}px + ${pxToRem(
     2 * spacing
   )})`;
+
   return {
     width,
     height,
@@ -21,7 +22,7 @@ export const SwitchIos = styled(Switch)(({ theme }) => {
       top: pxToRem(spacing),
       left: pxToRem(spacing),
       [`&.${switchClasses.checked}`]: {
-        color: (theme.vars || theme).palette.common.white,
+        color: theme.palette.common.white,
         transform: `translateX(calc(${width} - ${size} - ${
           borderWidth * 2
         }px - ${pxToRem(2 * spacing)}))`,
@@ -33,7 +34,7 @@ export const SwitchIos = styled(Switch)(({ theme }) => {
       },
     },
     [`& .${switchClasses.thumb}`]: {
-      background: (theme.vars || theme).palette.common.white,
+      background: theme.palette.common.white,
       width: size,
       height: size,
       boxShadow:
@@ -41,9 +42,9 @@ export const SwitchIos = styled(Switch)(({ theme }) => {
     },
     [`& .${switchClasses.track}`]: {
       borderRadius: 40,
-      border: `solid ${(theme.vars || theme).palette.grey[300]}`,
+      border: `solid ${theme.palette.grey[300]}`,
       borderWidth,
-      backgroundColor: (theme.vars || theme).palette.grey[50],
+      backgroundColor: theme.palette.grey[50],
       opacity: 1,
       transition: theme.transitions.create(["background-color", "border"]),
     },

@@ -29,6 +29,7 @@ type Wallet = {
 interface WalletSelectionModalProps {
   open: boolean;
   onClose: () => void;
+  onSelectWallet: (wallet: { id: string; name: string; image: string }) => void;
 }
 
 const WalletSelectionModal: React.FC<WalletSelectionModalProps> = ({ open, onClose }) => {
