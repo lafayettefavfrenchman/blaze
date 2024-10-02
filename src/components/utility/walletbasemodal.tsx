@@ -4,7 +4,7 @@ import Walleticon from "..//../assets/Walleticon.png";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Monument Grotesk, sans-serif",
   },
 });
 
@@ -42,6 +42,7 @@ const WalletbaseModal: React.FC<WalletbaseModalProps> = ({
             overflowY: "auto",
             overflowX: "hidden",
             textAlign: "center",
+            display: "grid"
           }}
           className="custom-scrollbar"
         >

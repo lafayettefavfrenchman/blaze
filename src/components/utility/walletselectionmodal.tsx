@@ -16,7 +16,7 @@ import WalletModal from "./wallet-modal";
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Monument Grotesk, sans-serif",
   },
 });
 
@@ -100,7 +100,7 @@ const WalletSelectionModal: React.FC<WalletSelectionModalProps> = ({ open, onClo
                 paddingLeft: "15px",
                 fontSize: "12px",
                 color: "black",
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "Monument Grotesk, sans-serif",
               },
             }}
             InputProps={{

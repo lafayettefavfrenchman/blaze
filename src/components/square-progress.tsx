@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from "react-lottie";
-import animationData from "../assets/square.json"; // Update with your Lottie animation path
+import animationData from "../assets/square (1).json"; // Update with your Lottie animation path
 
 interface SquareProgressProps {
   size: number | string;
