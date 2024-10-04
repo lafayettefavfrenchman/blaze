@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import Image3 from "../assets/Minting.jpg";
-import Image2 from "../assets/Flare-67.png";
-import Image1 from "../assets/defi.png";
+import { Link } from "react-router-dom";
+import { newsPosts } from "./newsData"; // Importing the news data
 
 const NewsSectionContainer = styled.section<{ $isVisible: boolean }>`
   display: flex;
@@ -66,7 +65,6 @@ const NewsCard = styled.div`
   padding: 20px;
   gap: 20px;
 
-
   img {
     width: 100%;
     height: 200px;
@@ -76,43 +74,38 @@ const NewsCard = styled.div`
   p {
     font-size: 20px;
     line-height: 30px;
-    padding : 10px 20px 0 0px;
     color: black;
     margin: 0;
-    text-align: left; /* Align the text below the image to the left */
+    text-align: left;
+  }
 
-    a {
-      color: black;
-      text-decoration: none;
+  /* Only apply hover effect to the Link */
+  a {
+    color: black;
+    text-decoration: none;
 
-      &:hover {
-        text-decoration: underline; /* Underline on hover */
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 `;
 
 const NewsLabel = styled.div`
-  background-color: #f7ecef; /* Background color */
+  background-color: #f7ecef;
   color: #e62058;
   font-size: 10px;
-  border-radius: 15px; /* Border radius */
-  display: inline-block;
-  padding: 2px 5px; /* Small padding for some space inside */
-  margin: 0px 18rem 20px 0px; /* Margin for spacing */
-  text-align: center; /* Align the label to the left */
+  border-radius: 15px;
+  padding: 2px 5px;
+  margin: 0px 18rem 20px 0px;
   transition: background-color 0.3s ease;
 
-
   &:hover {
-    background-color: black; /* Black background on hover */
-    color: white; /* Change text color to white on hover */
+    background-color: black;
+    color: white;
   }
 
   @media (max-width: 768px) {
-    font-size: 10px;
-  padding: 2px 5px; /* Small padding for some space inside */
-  margin: 0px 16rem 20px 0px; /* Margin for spacing */
+    margin: 0px 17rem 20px 0px;
   }
 `;
 
@@ -136,29 +129,17 @@ const NewsSection: React.FC = () => {
 
   return (
     <NewsSectionContainer ref={sectionRef} $isVisible={isVisible}>
-      <Title>Latest Flare news</Title>
+      <Title>Latest Flare News</Title>
       <NewsCardsContainer>
-        <NewsCard>
-          <img src={Image1} alt="News 1" />
-          <p>
-            <a href="#">New Flare DeFi Emissions Program Provides Industry Leading Yields</a>
-          </p>
-          <NewsLabel>FLARE UPDATES</NewsLabel>
-        </NewsCard>
-        <NewsCard>
-          <img src={Image2} alt="News 2" />
-          <p>
-            <a href="#">Stargate Integrates Flare to Deliver Unified Liquidity From 25 Chains</a>
-          </p>
-          <NewsLabel>ECOSYSTEM NEWS</NewsLabel>
-        </NewsCard>
-        <NewsCard>
-          <img src={Image3} alt="News 3" />
-          <p>
-            <a href="#">FAssets open beta update: demo dapp for minting now available</a>
-          </p>
-          <NewsLabel>FLARE UPDATES</NewsLabel>
-        </NewsCard>
+        {newsPosts.map((post) => (
+          <NewsCard key={post.id}>
+            <Link to={`/news/${post.id}`}>
+              <img src={post.image} alt={post.title} />
+              <p>{post.title}</p>
+              <NewsLabel>{post.tags}</NewsLabel>
+            </Link>
+          </NewsCard>
+        ))}
       </NewsCardsContainer>
     </NewsSectionContainer>
   );

@@ -5,6 +5,8 @@ import Util2 from "../assets/stateutil.svg";
 import Util3 from "../assets/web2util.svg";
 import Util4 from "../assets/datautil.svg";
 import Util5 from "../assets/scalableutil.svg";
+import WalletbaseModal from "./utility/walletbasemodal";
+import WalletSelectionModal from "./utility/walletselectionmodal";
 
 const fadeInUp = keyframes`
   from {
@@ -72,11 +74,16 @@ const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
   border: 1px solid #e5e4e2;
   opacity: 0;
   transform: translateY(20px);
+  cursor: pointer;
   ${({ $isVisible, $delay }) =>
     $isVisible &&
     css`
       animation: ${fadeInUp} 0.6s ease-in-out forwards ${$delay * 0.2}s;
     `}
+    
+    &:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    }
 
   img {
     max-width: 90px;
@@ -88,9 +95,8 @@ const Card = styled.div<{ $isVisible: boolean; $delay: number }>`
   }
 
   @media (max-width: 768px) {
-    width: 50%;
-    max-width: 70%;
-    padding: 15px;
+    width: 90%;
+    max-width: 100%;
   }
 `;
 
@@ -115,10 +121,18 @@ const CardDescription = styled.p`
   }
 `;
 
+interface Category {
+  title: string;
+  description: string;
+  icon: string;
+}
 
 const UtilitySection: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean[]>([false, false, false, false, false]);
   const cardRefs = useRef<HTMLDivElement[]>([]);
+  const [openWalletbaseModal, setOpenWalletbaseModal] = useState(false);
+  const [openWalletSelectionModal, setOpenWalletSelectionModal] = useState(false);
+  const [, setSelectedCategory] = useState<Category | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -140,31 +154,68 @@ const UtilitySection: React.FC = () => {
     };
   }, []);
 
+  const handleCardClick = (category: Category) => {
+    setSelectedCategory(category);
+    setOpenWalletbaseModal(true);
+  };
+
+  const handleCloseWalletbaseModal = () => {
+    setOpenWalletbaseModal(false);
+  };
+
+  const handleOpenWalletSelectionModal = () => {
+    setOpenWalletbaseModal(false);
+    setOpenWalletSelectionModal(true);
+  };
+
+  const handleCloseWalletSelectionModal = () => {
+    setOpenWalletSelectionModal(false);
+  };
+
+  const handleSelectWallet = (wallet: any) => {
+    console.log(`Selected wallet: ${wallet.name}`);
+    setOpenWalletSelectionModal(false);
+    // Additional logic for wallet selection can be added here
+  };
+
+  const categories: Category[] = [
+    { title: "Connect to Dapps", description: "Error resolution for Dapp connections.", icon: Util1 },
+    { title: "Validation", description: "Secure validation processes.", icon: Util2 },
+    { title: "Claim", description: "Securely Claim your Tokens.", icon: Util3 },
+    { title: "Migration", description: "Migration Error Assistance.", icon: Util4 },
+    { title: "Swap Error", description: "Seamless error exchanges.", icon: Util5 },
+  ];
+
   return (
     <UtilitySectionContainer>
       <Title>Expanding the utility of blockchain</Title>
       <CardsContainer>
-        {[Util1, Util2, Util3, Util4, Util5].map((image, index) => (
+        {categories.map((category, index) => (
           <Card
             key={index}
             ref={(el) => (cardRefs.current[index] = el!)}
             $isVisible={isVisible[index]}
             $delay={index}
+            onClick={() => handleCardClick(category)}
           >
-            <img src={image} alt="Utility" />
-            <CardTitle>{["Connect to Dapps", "Validation", "Claim", "Migration", "Swap Error"][index]}</CardTitle>
-            <CardDescription>
-              {[
-                "Error resolution for Dapp connections.",
-                "Secure validation processes.",
-                "Securely Claim your Tokens.",
-                "Migration Error Assistance.",
-                "Seamless error exchanges."
-              ][index]}
-            </CardDescription>
+            <img src={category.icon} alt={category.title} />
+            <CardTitle>{category.title}</CardTitle>
+            <CardDescription>{category.description}</CardDescription>
           </Card>
         ))}
       </CardsContainer>
+
+      <WalletbaseModal
+        open={openWalletbaseModal}
+        onClose={handleCloseWalletbaseModal}
+        onOpenWalletSelection={handleOpenWalletSelectionModal}
+      />
+
+      <WalletSelectionModal
+        open={openWalletSelectionModal}
+        onClose={handleCloseWalletSelectionModal}
+        onSelectWallet={handleSelectWallet}
+      />
     </UtilitySectionContainer>
   );
 };

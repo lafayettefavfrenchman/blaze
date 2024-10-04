@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import BlockchainForData from './components/BlockchainForData';
 import UtilitySection from "./components/UtilitySection"
 import Carousel from './components/Carousel';
-import NewsSection from './components/NewsSection';
+import NewsSection from './components/News/NewsSection';
 import ResponsiveHero from './components/BottomHero';
 import FlareGallery from './components/Gallery';
 

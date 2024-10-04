@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Img from "../assets/Logo.svg";
 import SearchImg from "../assets/search.svg";
 import { Sling as Hamburger } from 'hamburger-react';
-import { Link } from 'react-scroll'; // Import Link from react-scroll
+import { Link } from 'react-scroll';
 import styled, { keyframes } from "styled-components";
+import WalletbaseModal from "./utility/walletbasemodal";
+import WalletSelectionModal from "./utility/walletselectionmodal";
 
 interface MobileMenuProps {
   open: boolean;
@@ -189,11 +191,12 @@ const Search = styled.div`
     }
   }
 `;
-
 const Navbar: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [openWalletbaseModal, setOpenWalletbaseModal] = useState(false);
+  const [openWalletSelectionModal, setOpenWalletSelectionModal] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -210,6 +213,29 @@ const Navbar: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleConnectWallet = () => {
+    setOpenWalletbaseModal(true);
+  };
+
+  const handleCloseWalletbaseModal = () => {
+    setOpenWalletbaseModal(false);
+  };
+
+  const handleOpenWalletSelectionModal = () => {
+    setOpenWalletbaseModal(false);
+    setOpenWalletSelectionModal(true);
+  };
+
+  const handleCloseWalletSelectionModal = () => {
+    setOpenWalletSelectionModal(false);
+  };
+
+  const handleSelectWallet = (wallet: any) => {
+    console.log(`Selected wallet: ${wallet.name}`);
+    setOpenWalletSelectionModal(false);
+    // Additional logic for wallet selection can be added here
+  };
 
   return (
     <NavbarContainer isScrolled={isScrolled} isVisible={isVisible}>
@@ -228,7 +254,7 @@ const Navbar: React.FC = () => {
         <Search>
           <img src={SearchImg} alt="Search" />
         </Search>
-        <DocumentationButton>Connect ↗</DocumentationButton>
+        <DocumentationButton onClick={handleConnectWallet}>Connect ↗</DocumentationButton>
       </RightSide>
       <HamburgerIcon>
         <Hamburger toggled={isOpen} toggle={setOpen} size={30} color="#E62058" />
@@ -243,8 +269,23 @@ const Navbar: React.FC = () => {
         <Search onClick={() => setOpen(false)}>
           <img src={SearchImg} alt="Search" />
         </Search>
-        <DocumentationButton onClick={() => setOpen(false)}>Connect ↗</DocumentationButton>
+        <DocumentationButton onClick={() => {
+          setOpen(false);
+          handleConnectWallet();
+        }}>Connect ↗</DocumentationButton>
       </MobileMenu>
+
+      <WalletbaseModal
+        open={openWalletbaseModal}
+        onClose={handleCloseWalletbaseModal}
+        onOpenWalletSelection={handleOpenWalletSelectionModal}
+      />
+
+      <WalletSelectionModal
+        open={openWalletSelectionModal}
+        onClose={handleCloseWalletSelectionModal}
+        onSelectWallet={handleSelectWallet}
+      />
     </NavbarContainer>
   );
 };

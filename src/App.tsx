@@ -1,10 +1,9 @@
-// src/App.js
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlobalStyle from './GlobalStyles';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import HomePage from "./Homepage";  // Import the new HomePage component
-
+import HomePage from './Homepage'; // Homepage containing the NewsSection
+import BlogPost from './components/News/BlogPost'; // BlogPost component for individual posts
 
 function App() {
   return (
@@ -12,7 +11,8 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />  {/* Homepage with news cards */}
+        <Route path="/news/:id" element={<BlogPost />} />  {/* Dynamic blog post route */}
       </Routes>
       <Footer />
     </Router>
