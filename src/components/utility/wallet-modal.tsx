@@ -286,7 +286,7 @@ const WalletModal: React.FC<WalletModalProps> = ({
                 color: "#E62058", // Selected tab text color
               },
               "& .MuiTabs-indicator": {
-                backgroundColor: "#E62058 ", // Indicator color
+                backgroundColor: "#E62058", // Indicator color
               },
             }}
           >
