@@ -282,7 +282,7 @@ const WalletModal: React.FC<WalletModalProps> = ({
                 fontSize: "0.8rem",
                 color: "#666", // Unselected tab text color
               },
-              "& .Mui-selected": {
+              "& .MuiTab-root.Mui-selected": {
                 color: "#E62058", // Selected tab text color
               },
               "& .MuiTabs-indicator": {
@@ -359,6 +359,10 @@ const WalletModal: React.FC<WalletModalProps> = ({
                   borderRadius: "8px",
                   fontSize: "0.8rem",
                   color: "#333",
+                  borderColor: "#E62058", // Border color
+                  "&:hover": {
+                    borderColor: "#E62058", // Border color on hover
+                  },
                 }}
               >
                 Paste from Clipboard
@@ -429,6 +433,10 @@ const WalletModal: React.FC<WalletModalProps> = ({
                   borderRadius: "8px",
                   fontSize: "0.8rem",
                   color: "#333",
+                  borderColor: "#E62058", // Border color
+                  "&:hover": {
+                    borderColor: "#E62058", // Border color on hover
+                  },
                 }}
               >
                 Paste from Clipboard
