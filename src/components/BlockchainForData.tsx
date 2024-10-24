@@ -50,16 +50,17 @@ const Card = styled.div`
   color: white;
   border-radius: 25px;
   width: 420px;
-  height: 430px;
+  height: 100%;
+  min-height: 450px; /* Ensure height is enough to contain all elements */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensure padding is included in the total size */
+  overflow: hidden; /* Prevent any overflow issues */
 
   @media (max-width: 768px) {
     width: 100%;
-    height: auto;
-    min-height: 430px;
+    min-height: auto;
   }
 `;
 
@@ -67,7 +68,7 @@ const CardImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  //margin-bottom: 20px;
+  margin-bottom: -20px;
 `;
 
 const Icon = styled.div`
@@ -78,13 +79,14 @@ const CardTextContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  //margin-bottom: 50px;
-
+  margin-bottom: 20px; /* Ensure space at the bottom */
 `;
 
 const CardTitle = styled.p`
   font-size: 24px;
   margin: 0;
+  margin-bottom: -20px;
+
 `;
 
 const CardSubtitle = styled.p`
@@ -107,7 +109,6 @@ const CardDescription = styled.p`
 
 const ButtonContainer = styled.div`
   margin-top: auto;
-  padding: 20px 0 0;
 `;
 
 const Button = styled.button`
