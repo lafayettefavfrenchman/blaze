@@ -33,12 +33,18 @@ import PhantomWallet from "..//..//assets/Phantomwallet.svg";
 import KrakenWallet from "..//..//assets/Krakenwallet.png";
 import TonWallet from "..//..//assets/tonwallet.webp";
 import TonKeeper from "..//..//assets/tonkeeper.webp";
+import BifrostWallet from "..//..//assets/BifrostWallet.jpg";
 
 export const wallets = [
   {
     id: "metamask",
     name: "Metamask",
     image: Metamask,
+  },
+  {
+    id: "BifrostWallet",
+    name: "Bifrost Wallet",
+    image: BifrostWallet,
   },
   {
     id: "keplr",

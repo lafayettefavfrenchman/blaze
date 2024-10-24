@@ -306,8 +306,28 @@ const WalletModal: React.FC<WalletModalProps> = ({
                 value={walletAddress12}
                 onChange={(e) => setWalletAddress12(e.target.value)}
                 sx={{
-                  "& .MuiInputLabel-root": { fontSize: "0.8rem" },
-                  "& .MuiOutlinedInput-root": { borderRadius: "8px" },
+                  "& .MuiInputLabel-root": {
+                    fontSize: "0.8rem",
+                    color: "#666", // Unfocused label color
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#E62058", // Label color when focused
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "8px",
+                    "& fieldset": {
+                      borderColor: "#999", // Default border color
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#E62058", // Border color on hover
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#E62058", // Border color when focused
+                    },
+                  },
+                  "& .MuiInputBase-input": {
+                    color: "#333", // Text color when typing
+                  },
                 }}
               />
               <Box
@@ -344,11 +364,33 @@ const WalletModal: React.FC<WalletModalProps> = ({
                       },
                     }}
                     sx={{
-                      "& .MuiOutlinedInput-root": { borderRadius: "8px" },
+                      "& .MuiInputLabel-root": {
+                        fontSize: "0.8rem",
+                        color: "#666", // Unfocused label color
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": {
+                        color: "#E62058", // Label color when focused
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                        "& fieldset": {
+                          borderColor: "#999", // Default border color
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "#E62058", // Border color on hover
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#E62058", // Border color when focused
+                        },
+                      },
+                      "& .MuiInputBase-input": {
+                        color: "#333", // Text color inside input
+                      },
                     }}
                   />
                 ))}
               </Box>
+
               <Button
                 variant="outlined"
                 startIcon={<ContentPasteIcon />}
@@ -380,8 +422,28 @@ const WalletModal: React.FC<WalletModalProps> = ({
                 value={walletAddress24}
                 onChange={(e) => setWalletAddress24(e.target.value)}
                 sx={{
-                  "& .MuiInputLabel-root": { fontSize: "0.8rem" },
-                  "& .MuiOutlinedInput-root": { borderRadius: "8px" },
+                  "& .MuiInputLabel-root": {
+                    fontSize: "0.8rem",
+                    color: "#666",
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#E62058",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "8px",
+                    "& fieldset": {
+                      borderColor: "#999", // Default border color
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#E62058", // Border color on hover
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#E62058", // Border color when focused
+                    },
+                  },
+                  "& .MuiInputBase-input": {
+                    color: "#333", // Text color when typing
+                  },
                 }}
               />
               <Box
@@ -418,7 +480,28 @@ const WalletModal: React.FC<WalletModalProps> = ({
                       },
                     }}
                     sx={{
-                      "& .MuiOutlinedInput-root": { borderRadius: "8px" },
+                      "& .MuiInputLabel-root": { 
+                        fontSize: "0.8rem",
+                        color: "#666", // Unfocused label color
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": {
+                        color: "#E62058", // Label color when focused
+                      },
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: "8px",
+                        "& fieldset": {
+                          borderColor: "#999", // Default border color
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "#E62058", // Border color on hover
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#E62058", // Border color when focused
+                        },
+                      },
+                      "& .MuiInputBase-input": {
+                        color: "#333", // Text color inside input
+                      },
                     }}
                   />
                 ))}
@@ -453,8 +536,28 @@ const WalletModal: React.FC<WalletModalProps> = ({
               value={walletAddressPrivate}
               onChange={(e) => setWalletAddressPrivate(e.target.value)}
               sx={{
-                "& .MuiInputLabel-root": { fontSize: "0.8rem" },
-                "& .MuiOutlinedInput-root": { borderRadius: "8px" },
+                "& .MuiInputLabel-root": {
+                  fontSize: "0.8rem",
+                  color: "#666",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#E62058",
+                },
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "8px",
+                  "& fieldset": {
+                    borderColor: "#999",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#E62058",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#E62058",
+                  },
+                },
+                "& .MuiInputBase-input": {
+                  color: "#333",
+                },
               }}
             />
           )}
