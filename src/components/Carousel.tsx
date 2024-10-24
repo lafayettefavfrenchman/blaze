@@ -28,30 +28,49 @@ const CarouselWrapper = styled.div`
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  max-width: 1200px; /* Max width set to 1200px */
+  max-width: 1200px;
 `;
 
 const CarouselTrack = styled.div<{ currentSlide: number }>`
   display: flex;
   transition: transform 0.5s ease-in-out;
   transform: ${({ currentSlide }) => `translateX(-${currentSlide * 100 / 6}%)`};
-  width: ${({ children }) => `${(React.Children.count(children) * 100) / 6}%`}; /* Adjusted width for the track */
+  width: ${({ children }) => `${(React.Children.count(children) * 100) / 6}%`};
+
+  @media (max-width: 768px) {
+    transform: ${({ currentSlide }) => `translateX(-${currentSlide * 100 / 3}%)`}; /* 3 items per slide on mobile */
+    width: ${({ children }) => `${(React.Children.count(children) * 100) / 3}%`};
+  }
 `;
 
 const CarouselItem = styled.div`
-  min-width: calc(100% / 6); /* 6 images per view */
+  min-width: calc(100% / 6);
   display: flex;
   justify-content: center;
   align-items: center;
 
   img {
-    max-width: 75%; /* Ensure the image takes up the maximum width available within the container */
-    height: auto; /* Maintain the natural aspect ratio of the image */
+    max-width: 75%;
+    height: auto;
     max-height: 80px;
 
     @media (max-width: 768px) {
-      max-height: 50px;
+      max-width: 90%; /* Slightly larger on mobile */
+      max-height: 60px; /* Make it more visible */
     }
+
+    @media (max-width: 480px) {
+      max-width: 100%; /* Full width on very small screens */
+      max-height: 70px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-width: calc(100% / 3); /* 3 items per slide on mobile */
+  }
+
+  @media (max-width: 480px) {
+    min-width: calc(100% / 2); /* 2 items per slide on very small screens */
   }
 `;
 
@@ -88,9 +107,14 @@ const CarouselButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 5px 20px;
-    font-size: 10px;
+    padding: 5px 30px; /* Slightly reduce button padding on mobile */
+    font-size: 13px;
+  }
 
+  @media (max-width: 480px) {
+    padding: 5px 20px; /* Even smaller on very small screens */
+    font-size: 12px;
+  }
 `;
 
 const Carousel: React.FC = () => {

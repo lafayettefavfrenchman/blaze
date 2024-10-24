@@ -98,6 +98,9 @@ const NewsLabel = styled.div`
   padding: 2px 5px;
   margin: 0px 18rem 20px 0px;
   transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent wrapping */
+  text-overflow: ellipsis; /* Add ellipsis if content is too long */
+  overflow: hidden; /* Hide overflow */
 
   &:hover {
     background-color: black;
@@ -106,8 +109,10 @@ const NewsLabel = styled.div`
 
   @media (max-width: 768px) {
     margin: 0px 17rem 20px 0px;
+    font-size: 8px; /* Reduce font size on small screens */
   }
 `;
+
 
 const NewsSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

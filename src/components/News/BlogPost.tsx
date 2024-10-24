@@ -14,7 +14,8 @@ const BlogContainer = styled.div`
 const Topper = styled.div`
   background-color: #f7f7f7;
   width: 100%;
-  padding: 20px;
+  padding: 25px;
+  border-radius: 18px;
 `;
 const BackButton = styled.p`
   cursor: pointer;
@@ -74,6 +75,7 @@ const BlogContent = styled.div`
   line-height: 1.6;
   font-size: 18px;
   margin-top: 20px;
+  padding: 25px;
 `;
 
 const StayInTheKnowButton = styled.button`
